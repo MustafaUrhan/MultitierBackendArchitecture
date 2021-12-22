@@ -48,7 +48,7 @@ namespace WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpPost("getbyid")]
+        [HttpGet("getbyid")]
         public async Task<IActionResult> GetById(int productId)
         {
             var result = await _prodcutService.GetById(productId);
@@ -59,7 +59,7 @@ namespace WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpPost("getbycategoryid")]
+        [HttpGet("getbycategoryid")]
         public async Task<IActionResult> GetByCategoryId(int categoryId)
         {
             var result = await _prodcutService.GetByCategoryId(categoryId);
@@ -70,7 +70,7 @@ namespace WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpPost("getall")]
+        [HttpGet("getall")]
         public async Task<IActionResult> GetAll()
         {
             var result = await _prodcutService.GetAll();
