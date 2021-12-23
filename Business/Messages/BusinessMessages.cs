@@ -7,5 +7,8 @@
         public static string ProductDeleted = "Product successfully deleted";
 
         public static string EntityNotFound = "Entity not found";
+        public static string UserNotFound = "User not found";
+        public static string PasswordNotValid = "Password is not valid";
+        public static string UserAlreadyRegistered = "User already registered";
     }
 }
