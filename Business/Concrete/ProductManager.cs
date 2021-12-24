@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Messages;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -15,6 +17,7 @@ namespace Business.Concrete
             _productDal = productDal;
         }
 
+        [ValidationAspect(typeof(ProductValidator), Priority = 1)]
         public async Task<IResult> Add(Product product)
         {
             await _productDal.Add(product);
