@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Messages;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching.In_Memory;
 using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
@@ -19,6 +20,7 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(ProductValidator), Priority = 1)]
+        [CacheRemoveAspect("IProductService.Get")]
         public async Task<IResult> Add(Product product)
         {
             await _productDal.Add(product);
@@ -58,6 +60,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Product>>(productList.ToList());
         }
 
+        [CacheAspect(2)]
         public async Task<IDataResult<List<Product>>> GetAll()
         {
             var productList = await _productDal.GetList(null);
