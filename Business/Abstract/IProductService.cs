@@ -11,5 +11,6 @@ namespace Business.Abstract
         Task<IDataResult<Product>> GetById(int productId);
         Task<IDataResult<List<Product>>> GetByCategoryId(int categoryId);
         Task<IDataResult<List<Product>>> GetAll();
+        Task<IResult> TransactionScopeTest(Product product);
     }
 }

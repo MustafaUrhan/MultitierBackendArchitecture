@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Messages;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -61,6 +62,14 @@ namespace Business.Concrete
         {
             var productList = await _productDal.GetList(null);
             return new SuccessDataResult<List<Product>>(productList.ToList());
+        }
+
+        [TransactionScopeAspect]
+        public async Task<IResult> TransactionScopeTest(Product product)
+        {
+            await _productDal.Update(product);
+            await _productDal.Add(product);
+            return new SuccessResult();
         }
     }
 }

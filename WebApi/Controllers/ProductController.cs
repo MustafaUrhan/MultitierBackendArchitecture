@@ -80,5 +80,16 @@ namespace WebApi.Controllers
             }
             return Ok(result);
         }
+
+        [HttpPost("transactionscopetest")]
+        public async Task<IActionResult> TransactionScopeTest(Product product)
+        {
+            var result = await _prodcutService.TransactionScopeTest(product);
+            if (!result.Success)
+            {
+                return BadRequest(result);
+            }
+            return Ok(result);
+        }
     }
 }

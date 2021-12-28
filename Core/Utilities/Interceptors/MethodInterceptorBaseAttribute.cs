@@ -6,8 +6,12 @@ namespace Core.Utilities.Interceptors
     public abstract class MethodInterceptorBaseAttribute : Attribute, IInterceptor
     {
         public int Priority { get; set; }
+
+
         public virtual void Intercept(IInvocation invocation)
         {
+            throw new NotImplementedException();
         }
+
     }
 }

@@ -32,5 +32,6 @@ namespace Core.Utilities.Interceptors
             }
             OnAfter(invocation);
         }
+       
     }
 }
