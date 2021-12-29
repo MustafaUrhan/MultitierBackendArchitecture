@@ -3,7 +3,7 @@ using System.Security.Claims;
 
 namespace Core.Extentions
 {
-    public static class ClaimPrinciplasExtentions
+    public static class ClaimExtentions
     {
         public static void AddName(this ICollection<Claim> claims, string name)
         {

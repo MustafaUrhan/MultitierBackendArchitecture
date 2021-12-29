@@ -16,6 +16,8 @@ namespace Core.Utilities.Interceptors
             try
             {
                 invocation.Proceed();
+                var result = invocation.ReturnValue as Task;
+                result?.Wait();
             }
             catch (Exception ex)
             {
@@ -32,6 +34,6 @@ namespace Core.Utilities.Interceptors
             }
             OnAfter(invocation);
         }
-       
+
     }
 }

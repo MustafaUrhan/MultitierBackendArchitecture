@@ -2,6 +2,7 @@
 using Business.Messages;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching.In_Memory;
+using Core.Aspects.Autofac.SecuredOperation;
 using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
@@ -53,7 +54,7 @@ namespace Business.Concrete
             }
             return new SuccessDataResult<Product>(productResult);
         }
-
+        [SecuredOperationAspect("Product.List")]
         public async Task<IDataResult<List<Product>>> GetByCategoryId(int categoryId)
         {
             var productList = await _productDal.GetList(s => s.CategoryId == categoryId);
